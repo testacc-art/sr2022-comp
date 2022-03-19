@@ -1,0 +1,85 @@
+teams:
+    ABS:
+        name: Abingdon School
+        rookie: Yes
+    BPV:
+        name: Barton Peveril College
+        rookie: No
+    BRK:
+        name: Brockenhurst College
+        rookie: No
+    CAG:
+        name: Calday Grange
+        rookie: Yes
+    CCR:
+        name: Cirencester College
+        rookie: No
+    CLY:
+        name: The College of Richard Collyer
+        rookie: No
+    CRB:
+        name: Cranbrook School
+        rookie: No
+    ELC:
+        name: Eltham College
+        rookie: No
+    GDC:
+        name: Godalming College
+        rookie: No
+    HAB:
+        name: Haberdashers' School
+        rookie: No
+    HAM:
+        name: Hampton College
+        rookie: No
+    HEA:
+        name: Hertswood Academy
+        rookie: Yes
+    HRS:
+        name: Hills Road Sixth Form College
+        rookie: No
+    HSO:
+        name: Headington School
+        rookie: No
+    HWM:
+        name: Harris Westminster Sixth Form
+        rookie: Yes
+    KEG:
+        name: King Edward VI Grammar School
+        rookie: No
+    NMS:
+        name: The National Mathematics and Science College
+        rookie: Yes
+    PHC:
+        name: St Philomena's Catholic High School for Girls
+        rookie: Yes
+    PSC:
+        name: Peter Symonds College
+        rookie: No
+    QMC:
+        name: Queen Mary's College
+        rookie: No
+    RGS:
+        name: Royal Grammar School Guildford
+        rookie: No
+    SDC:
+        name: St Dunstan's College
+        rookie: No
+    SEN:
+        name: Southend High School for Boys
+        rookie: No
+    SOG:
+        name: Saint Olaves Grammar School
+        rookie: No
+    SWA:
+        name: Swakeleys School for Girls
+        rookie: Yes
+    SWI:
+        name: South Wilts Grammar School
+        rookie: No
+    TLC:
+        name: The Ladies' College
+        rookie: No
+    WGS:
+        name: Wisbech Grammar School
+        rookie: No
