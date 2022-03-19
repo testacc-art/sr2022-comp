@@ -53,6 +53,9 @@ class Scorer(object):
                 f"Must be no more than {MAX_CANS} got {len(cans)}",
             )
 
+        # TODO: Check that teams are present if they are marked as leaving
+        # their zone
+
 
 if __name__ == '__main__':
     import libproton
