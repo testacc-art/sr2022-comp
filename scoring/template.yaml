@@ -5,19 +5,19 @@ teams:
     zone: 0
     disqualified: false
     present: true
-    robot_moved: true
+    left_scoring_zone: true
   TLA2:
     zone: 1
     disqualified: false
     present: true
-    robot_moved: false
+    left_scoring_zone: false
 
 arena_zones:
   0:
-    cans: "TTB"
+    tokens: "TTB"
   1:
-    cans: "S"
+    tokens: "S"
   2:
-    cans: "SBBT"
+    tokens: "SBBT"
   3:
-    cans: ""
+    tokens: ""

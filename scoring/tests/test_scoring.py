@@ -28,8 +28,8 @@ class ScorerTests(unittest.TestCase):
 
     def setUp(self):
         self.teams_data = {
-            'ABC': {'zone': 0, 'robot_moved': False},
-            'DEF': {'zone': 1, 'robot_moved': False},
+            'ABC': {'zone': 0, 'left_scoring_zone': False},
+            'DEF': {'zone': 1, 'left_scoring_zone': False},
         }
 
     def test_template(self):
@@ -55,57 +55,57 @@ class ScorerTests(unittest.TestCase):
     def test_no_cans(self):
         self.assertScores(
             {'ABC': 0, 'DEF': 0},
-            {0: {'cans': ""}, 1: {'cans': ""}},
+            {0: {'tokens': ""}, 1: {'tokens': ""}},
         )
 
     def test_cans(self):
         self.assertScores(
             {'ABC': 0, 'DEF': 4},
-            {0: {'cans': "S"}, 1: {'cans': "TBS"}},
+            {0: {'tokens': "S"}, 1: {'tokens': "TBS"}},
         )
 
-    def test_cans_and_moved(self):
-        self.teams_data['ABC']['robot_moved'] = True
+    def test_cans_and_left_scoring_zone(self):
+        self.teams_data['ABC']['left_scoring_zone'] = True
         self.assertScores(
             {'ABC': 1, 'DEF': 4},
-            {0: {'cans': "S"}, 1: {'cans': "TBS"}},
+            {0: {'tokens': "S"}, 1: {'tokens': "TBS"}},
         )
 
     def test_invalid_can_characters(self):
         with self.assertRaises(InvalidScoresheetException):
             self.assertScores(
                 {'ABC': 0, 'DEF': 0},
-                {0: {'cans': "X"}, 1: {'cans': "TBS"}},
+                {0: {'tokens': "X"}, 1: {'tokens': "TBS"}},
             )
 
     def test_lower_case_can_characters(self):
         with self.assertRaises(InvalidScoresheetException):
             self.assertScores(
                 {'ABC': 0, 'DEF': 0},
-                {0: {'cans': "s"}, 1: {'cans': "tbs"}},
+                {0: {'tokens': "s"}, 1: {'tokens': "tbs"}},
             )
 
     def test_more_than_28_cans_seen(self):
         with self.assertRaises(InvalidScoresheetException):
             self.assertScores(
                 {'ABC': 0, 'DEF': 0},
-                {0: {'cans': "S" * 28}, 1: {'cans': "TB"}},
+                {0: {'tokens': "S" * 28}, 1: {'tokens': "TB"}},
             )
 
     def test_space_in_cans(self):
         self.assertScores(
             {'ABC': 0, 'DEF': 4},
-            {0: {'cans': "S "}, 1: {'cans': "TB S"}},
+            {0: {'tokens': "S "}, 1: {'tokens': "TB S"}},
         )
 
-    def test_robot_moved_not_specified(self):
+    def test_left_scoring_zone_not_specified(self):
         self.teams_data = {
             'ABC': {'zone': 0},
             'DEF': {'zone': 1},
         }
         self.assertScores(
             {'ABC': 0, 'DEF': 4},
-            {0: {'cans': "S"}, 1: {'cans': "TBS"}},
+            {0: {'tokens': "S"}, 1: {'tokens': "TBS"}},
         )
 
 

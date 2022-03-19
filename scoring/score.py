@@ -23,10 +23,10 @@ class Scorer(object):
         scores = {}
         for tla, info in self._teams_data.items():
             zone = info['zone']
-            cans = self._arena_data[zone]['cans']
+            cans = self._arena_data[zone]['tokens']
             points = sum(CAN_STATE_SCORES[c] for c in cans if c != " ")
 
-            if info.get('robot_moved', False):
+            if info.get('left_scoring_zone', False):
                 points += 1
 
             scores[tla] = points
@@ -35,7 +35,7 @@ class Scorer(object):
 
     def validate(self, extra_data):
         cans = "".join(itertools.chain.from_iterable(
-            info['cans']
+            info['tokens']
             for info in self._arena_data.values()
         ))
         cans = cans.replace(" ", "")
