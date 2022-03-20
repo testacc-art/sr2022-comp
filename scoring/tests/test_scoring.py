@@ -28,8 +28,8 @@ class ScorerTests(unittest.TestCase):
 
     def setUp(self):
         self.teams_data = {
-            'ABC': {'zone': 0, 'left_scoring_zone': False},
-            'DEF': {'zone': 1, 'left_scoring_zone': False},
+            'ABC': {'zone': 0, 'present': True, 'left_scoring_zone': False},
+            'DEF': {'zone': 1, 'present': True, 'left_scoring_zone': False},
         }
 
     def test_template(self):
@@ -100,13 +100,24 @@ class ScorerTests(unittest.TestCase):
 
     def test_left_scoring_zone_not_specified(self):
         self.teams_data = {
-            'ABC': {'zone': 0},
-            'DEF': {'zone': 1},
+            'ABC': {'zone': 0, 'present': True},
+            'DEF': {'zone': 1, 'present': True},
         }
         self.assertScores(
             {'ABC': 0, 'DEF': 4},
             {0: {'tokens': "S"}, 1: {'tokens': "TBS"}},
         )
+
+    def test_left_scoring_zone_but_absent(self):
+        self.teams_data = {
+            'ABC': {'zone': 0, 'present': False, 'left_scoring_zone': True},
+            'DEF': {'zone': 1, 'present': True, 'left_scoring_zone': False},
+        }
+        with self.assertRaises(InvalidScoresheetException):
+            self.assertScores(
+                {'ABC': 0, 'DEF': 4},
+                {0: {'tokens': "S"}, 1: {'tokens': "TBS"}},
+            )
 
 
 if __name__ == '__main__':

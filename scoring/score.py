@@ -53,8 +53,15 @@ class Scorer(object):
                 f"Must be no more than {MAX_CANS} got {len(cans)}",
             )
 
-        # TODO: Check that teams are present if they are marked as leaving
-        # their zone
+        missing_but_moving_teams = []
+        for tla, info in self._teams_data.items():
+            if not info['present'] and info['left_scoring_zone']:
+                missing_but_moving_teams.append(tla)
+        if missing_but_moving_teams:
+            raise InvalidScoresheetException(
+                f"Teams {', '.join(missing_but_moving_teams)} are not present "
+                "but are marked as leaving their zone",
+            )
 
 
 if __name__ == '__main__':
