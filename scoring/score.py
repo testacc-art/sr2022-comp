@@ -50,10 +50,13 @@ class Scorer(object):
                 f"Must be no more than {MAX_CANS} got {len(cans)}",
             )
 
-        missing_but_moving_teams = []
-        for tla, info in self._teams_data.items():
-            if not info['present'] and info['left_scoring_zone']:
-                missing_but_moving_teams.append(tla)
+        missing_but_moving_teams = [
+            tla
+            for tla, info in self._teams_data.items()
+            if info.get('left_scoring_zone', False)
+            if not info.get('present', True)
+        ]
+
         if missing_but_moving_teams:
             raise InvalidScoresheetException(
                 f"Teams {', '.join(missing_but_moving_teams)} are not present "
