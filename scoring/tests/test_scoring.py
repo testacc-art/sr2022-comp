@@ -78,6 +78,16 @@ class ScorerTests(unittest.TestCase):
         with self.assertRaises(InvalidScoresheetException):
             scorer.validate(None)
 
+    def test_invalid_can_characters_in_zone_without_robot(self):
+        self.teams_data = {
+            'ABC': {'zone': 0, 'present': True, 'left_scoring_zone': False},
+        }
+        scorer = self.construct_scorer(
+            {0: {'tokens': "S"}, 1: {'tokens': "X"}},
+        )
+        with self.assertRaises(InvalidScoresheetException):
+            scorer.validate(None)
+
     def test_lower_case_can_characters(self):
         scorer = self.construct_scorer(
             {0: {'tokens': "s"}, 1: {'tokens': "tbs"}},
@@ -85,9 +95,29 @@ class ScorerTests(unittest.TestCase):
         with self.assertRaises(InvalidScoresheetException):
             scorer.validate(None)
 
+    def test_lower_case_can_characters_in_zone_without_robot(self):
+        self.teams_data = {
+            'ABC': {'zone': 0, 'present': True, 'left_scoring_zone': False},
+        }
+        scorer = self.construct_scorer(
+            {0: {'tokens': "S"}, 1: {'tokens': "s"}},
+        )
+        with self.assertRaises(InvalidScoresheetException):
+            scorer.validate(None)
+
     def test_more_than_28_cans_seen(self):
         scorer = self.construct_scorer(
             {0: {'tokens': "S" * 28}, 1: {'tokens': "TB"}},
+        )
+        with self.assertRaises(InvalidScoresheetException):
+            scorer.validate(None)
+
+    def test_more_than_28_cans_seen_in_zone_without_robot(self):
+        self.teams_data = {
+            'ABC': {'zone': 0, 'present': True, 'left_scoring_zone': False},
+        }
+        scorer = self.construct_scorer(
+            {0: {'tokens': ""}, 1: {'tokens': "S" * 29}},
         )
         with self.assertRaises(InvalidScoresheetException):
             scorer.validate(None)
