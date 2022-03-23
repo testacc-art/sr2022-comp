@@ -47,8 +47,9 @@
 {% endblock %}
 
 {% block zone_other %}
-{{ input_tokens_wider(180, 285, 'other') }}
-{% endblock %}
+<foreignObject x="250" y="250" height="100" width="100">
+  <img src="{{ url_for('static', filename='images/logo.png') }}" />
+</foreignObject>{% endblock %}
 
 {% block valid_token_regex %}
 var valid_token_regex = /^[TBS]*$/;
