@@ -1,6 +1,3 @@
-import itertools
-
-
 class InvalidScoresheetException(Exception):
     pass
 
@@ -34,10 +31,10 @@ class Scorer(object):
         return scores
 
     def validate(self, extra_data):
-        cans = "".join(itertools.chain.from_iterable(
+        cans = "".join(
             info['tokens']
             for info in self._arena_data.values()
-        ))
+        )
         cans = cans.replace(" ", "")
 
         extra = set(cans) - set(CAN_STATE_SCORES.keys())
