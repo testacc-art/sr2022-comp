@@ -72,24 +72,24 @@ class ScorerTests(unittest.TestCase):
         )
 
     def test_invalid_can_characters(self):
+        scorer = self.construct_scorer(
+            {0: {'tokens': "X"}, 1: {'tokens': "TBS"}},
+        )
         with self.assertRaises(InvalidScoresheetException):
-            scorer = self.construct_scorer(
-                {0: {'tokens': "X"}, 1: {'tokens': "TBS"}},
-            )
             scorer.validate(None)
 
     def test_lower_case_can_characters(self):
+        scorer = self.construct_scorer(
+            {0: {'tokens': "s"}, 1: {'tokens': "tbs"}},
+        )
         with self.assertRaises(InvalidScoresheetException):
-            scorer = self.construct_scorer(
-                {0: {'tokens': "s"}, 1: {'tokens': "tbs"}},
-            )
             scorer.validate(None)
 
     def test_more_than_28_cans_seen(self):
+        scorer = self.construct_scorer(
+            {0: {'tokens': "S" * 28}, 1: {'tokens': "TB"}},
+        )
         with self.assertRaises(InvalidScoresheetException):
-            scorer = self.construct_scorer(
-                {0: {'tokens': "S" * 28}, 1: {'tokens': "TB"}},
-            )
             scorer.validate(None)
 
     def test_space_in_cans(self):
@@ -113,10 +113,10 @@ class ScorerTests(unittest.TestCase):
             'ABC': {'zone': 0, 'present': False, 'left_scoring_zone': True},
             'DEF': {'zone': 1, 'present': True, 'left_scoring_zone': False},
         }
+        scorer = self.construct_scorer(
+            {0: {'tokens': "S"}, 1: {'tokens': "TBS"}},
+        )
         with self.assertRaises(InvalidScoresheetException):
-            scorer = self.construct_scorer(
-                {0: {'tokens': "S"}, 1: {'tokens': "TBS"}},
-            )
             scorer.validate(None)
 
 
