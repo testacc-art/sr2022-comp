@@ -73,24 +73,24 @@ class ScorerTests(unittest.TestCase):
 
     def test_invalid_can_characters(self):
         with self.assertRaises(InvalidScoresheetException):
-            self.assertScores(
-                {'ABC': 0, 'DEF': 0},
+            scorer = self.construct_scorer(
                 {0: {'tokens': "X"}, 1: {'tokens': "TBS"}},
             )
+            scorer.validate(None)
 
     def test_lower_case_can_characters(self):
         with self.assertRaises(InvalidScoresheetException):
-            self.assertScores(
-                {'ABC': 0, 'DEF': 0},
+            scorer = self.construct_scorer(
                 {0: {'tokens': "s"}, 1: {'tokens': "tbs"}},
             )
+            scorer.validate(None)
 
     def test_more_than_28_cans_seen(self):
         with self.assertRaises(InvalidScoresheetException):
-            self.assertScores(
-                {'ABC': 0, 'DEF': 0},
+            scorer = self.construct_scorer(
                 {0: {'tokens': "S" * 28}, 1: {'tokens': "TB"}},
             )
+            scorer.validate(None)
 
     def test_space_in_cans(self):
         self.assertScores(
@@ -114,10 +114,10 @@ class ScorerTests(unittest.TestCase):
             'DEF': {'zone': 1, 'present': True, 'left_scoring_zone': False},
         }
         with self.assertRaises(InvalidScoresheetException):
-            self.assertScores(
-                {'ABC': 0, 'DEF': 4},
+            scorer = self.construct_scorer(
                 {0: {'tokens': "S"}, 1: {'tokens': "TBS"}},
             )
+            scorer.validate(None)
 
 
 if __name__ == '__main__':
