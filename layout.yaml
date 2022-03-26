@@ -2,37 +2,37 @@ teams:
   - name: level-2-bar
     display_name: Level 2 Bar
     teams:
-      - ABS
-      - BPV
-      - BRK
-      - CAG
-      - CCR
-      - CLY
-      - CRB
-      - ELC
-      - GDC
-      - HAB
-      - HAM
-      - HEA
-      - HRS
-      - HSO
-      - HWM
-      - KEG
-      - NMS
-      - PHC
-      - PSC
       - QMC
-      - RGS
+      - CCR
+      - GDC
+      - NMS
       - SDC
-      - SEN
-      - SOG
-      - SWA
+      - HEA
+      - HWM
+      - CAG
       - SWI
-      - TLC
-      - WGS
   - name: level-3-south
     display_name: Level 3 South
-    teams: []
+    teams:
+      - BRK
+      - HAB
+      - ELC
+      - SEN
+      - HRS
+      - TLC
+      - RGS
+      - WGS
+      - PHC
   - name: level-3-north
     display_name: Level 3 North
-    teams: []
+    teams:
+      - CLY
+      - PSC
+      - BPV
+      - ABS
+      - HAM
+      - CRB
+      - KEG
+      - SOG
+      - HSO
+      - SWA
