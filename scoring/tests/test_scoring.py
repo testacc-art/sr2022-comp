@@ -35,7 +35,7 @@ class ScorerTests(unittest.TestCase):
     def test_template(self):
         template_path = ROOT / 'template.yaml'
         with template_path.open() as f:
-            data = yaml.load(f)
+            data = yaml.safe_load(f)
 
         teams_data = data['teams']
         arena_data = data.get('arena_zones')
