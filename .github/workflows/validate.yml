@@ -13,7 +13,7 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - uses: PeterJCLaw/srcomp-validate-action@b07ddc100ef584150e10e0b8693bbcb97773b134
+      - uses: PeterJCLaw/srcomp-validate-action@f1b9a7cf47bdeece84eb1366323e8dc50589a8e0
 
       - run: ls -la
         if: ${{ always() }}
