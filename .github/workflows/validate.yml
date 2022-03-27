@@ -13,4 +13,4 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - uses: PeterJCLaw/srcomp-validate-action@v0.1
+      - uses: PeterJCLaw/srcomp-validate-action@4a3c67770703a7abce85ca66a56a7acfcb2f4c42
