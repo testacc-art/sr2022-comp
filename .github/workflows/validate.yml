@@ -14,3 +14,9 @@ jobs:
         uses: actions/checkout@v2
 
       - uses: PeterJCLaw/srcomp-validate-action@bd809ff12b77607cc2f0ebbd035d6f0a5c8d32fc
+
+      - run: ls -la
+        if: ${{ always() }}
+
+      - run: ls -laR /home/runner/work/_actions/PeterJCLaw
+        if: ${{ always() }}
