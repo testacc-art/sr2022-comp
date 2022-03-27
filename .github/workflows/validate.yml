@@ -7,16 +7,10 @@ on:
   pull_request:
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - uses: PeterJCLaw/srcomp-validate-action@f1b9a7cf47bdeece84eb1366323e8dc50589a8e0
-
-      - run: ls -la
-        if: ${{ always() }}
-
-      - run: ls -laR /home/runner/work/_actions/PeterJCLaw
-        if: ${{ always() }}
+      - uses: PeterJCLaw/srcomp-validate-action@v0.1
