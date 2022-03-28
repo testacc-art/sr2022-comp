@@ -12,5 +12,5 @@ jobs:
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
-      - run: pwd
+      - run: echo "$(pwd)"
       - uses: PeterJCLaw/srcomp-validate-action@v0.2
