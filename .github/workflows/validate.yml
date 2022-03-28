@@ -13,4 +13,4 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
       - run: echo "$(pwd)"
-      - uses: PeterJCLaw/srcomp-validate-action@v0.2
+      - uses: testacc-art/srcomp-validate-action@test-for-current-dir
