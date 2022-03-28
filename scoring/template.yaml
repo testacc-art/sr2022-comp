@@ -1,0 +1,23 @@
+match_number: 0
+arena_id: main
+teams:
+  TLA1:
+    zone: 0
+    disqualified: false
+    present: true
+    left_scoring_zone: true
+  TLA2:
+    zone: 1
+    disqualified: false
+    present: true
+    left_scoring_zone: false
+
+arena_zones:
+  0:
+    tokens: "TTB"
+  1:
+    tokens: "S"
+  2:
+    tokens: "SBBT"
+  3:
+    tokens: ""

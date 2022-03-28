@@ -1,0 +1,56 @@
+{% extends "_update.html" %}
+
+{% macro input_tokens_wider(x, y, corner) %}
+<foreignObject x="{{ x }}" y="{{ y }}" width="70" height="30">
+  <label for="tokens_{{ corner }}">Cans</label>
+</foreignObject>
+<foreignObject x="{{ x + 75 }}" y="{{ y }}" width="150" height="30">
+  <input class="tokens" type="text" id="tokens_{{ corner }}" name="tokens_{{ corner }}"
+    value="{{ request.form.get('tokens_{}'.format(corner)) | empty_if_none }}" onkeyup="token_input_change(this);" />
+</foreignObject>
+{% endmacro %}
+
+{% macro input_left_scoring_zone(x, y, corner) %}
+{{ input_checkbox(x,y,132,corner,"left_scoring_zone","Fully Left Zone")}}
+{% endmacro %}
+
+{% block zone_0 %}
+{{ input_tla(110, 70, 0) }}
+{{ input_tokens_wider(40, 120, 0) }}
+{{ input_present(55, 170, 0) }}
+{{ input_left_scoring_zone(3, 205, 0) }}
+{{ input_disqualified(15, 240, 0) }}
+{% endblock %}
+
+{% block zone_1 %}
+{{ input_tla(345, 70, 1) }}
+{{ input_tokens_wider(335, 120, 1) }}
+{{ input_present(455, 170, 1) }}
+{{ input_left_scoring_zone(403, 205, 1) }}
+{{ input_disqualified(415, 240, 1) }}
+{% endblock %}
+
+{% block zone_2 %}
+{{ input_tla(425, 340, 2) }}
+{{ input_tokens_wider(350, 390, 2) }}
+{{ input_present(405, 440, 2) }}
+{{ input_left_scoring_zone(353, 475, 2) }}
+{{ input_disqualified(365, 510, 2) }}
+{% endblock %}
+
+{% block zone_3 %}
+{{ input_tla(30, 340, 3) }}
+{{ input_tokens_wider(10, 390, 3) }}
+{{ input_present(105, 440, 3) }}
+{{ input_left_scoring_zone(53, 475, 3) }}
+{{ input_disqualified(65, 510, 3) }}
+{% endblock %}
+
+{% block zone_other %}
+<foreignObject x="250" y="250" height="100" width="100">
+  <img src="{{ url_for('static', filename='images/logo.png') }}" />
+</foreignObject>{% endblock %}
+
+{% block valid_token_regex %}
+var valid_token_regex = /^[TBS]*$/;
+{% endblock %}
